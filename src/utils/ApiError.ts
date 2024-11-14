@@ -3,11 +3,7 @@ export class ApiError extends Error {
 	success: boolean;
 	data: null;
 
-	constructor(
-		statusCode = 500,
-		message = "Something went wrong! try again.",
-		stack = ""
-	) {
+	constructor(statusCode = 500, message = "Something went wrong! try again.", stack = "") {
 		super(message);
 		this.message = message;
 		this.statusCode = statusCode;
