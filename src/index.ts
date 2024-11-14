@@ -1,8 +1,9 @@
-import express from "express";
+import { app } from "./app";
 import config from "./config";
+import { connectDB } from "./database/mongo.database";
 
-const app = express();
-
-app.listen(config.port, () => {
-	console.log("Server listening on port: ", config.port);
+connectDB().then(() => {
+	app.listen(config.port, () => {
+		console.log("Server listening on port: ", config.port);
+	});
 });
