@@ -14,8 +14,7 @@ export const validateRequest = (schema: AnyZodObject) =>
 			});
 			next();
 		} catch (error: any) {
-			console.log(error.errors);
-			const errors = formatZodErrors(error.errors);
-			throw new ApiError(400, "", errors);
+			const errors = formatZodErrors(error.errors) as any;
+			throw new ApiError(400, "All fields are required.", errors);
 		}
 	});
