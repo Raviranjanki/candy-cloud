@@ -7,6 +7,13 @@ const productSchema = new mongoose.Schema(
 			required: true,
 			trim: true,
 		},
+		slug: {
+			type: String,
+			required: true,
+			trim: true,
+			unique: true,
+			index: true,
+		},
 		description: {
 			type: String,
 			required: true,
@@ -29,10 +36,32 @@ const productSchema = new mongoose.Schema(
 			type: Number,
 			required: true,
 		},
+		current_rating: {
+			type: Number,
+			default: 0,
+		},
 		rating: {
 			type: Number,
 			default: 0,
 		},
+		is_deleted: {
+			type: Boolean,
+			default: false,
+		},
+		// rating: [
+		// 	{
+		// 		user: {
+		// 			type: "ObjectId",
+		// 			ref: "user",
+		// 		},
+		// 		feedback: String,
+		// 		star: Number,
+		// 		date: {
+		// 			type: Date,
+		// 			default: Date.now,
+		// 		},
+		// 	},
+		// ],
 	},
 	{ timestamps: true }
 );
